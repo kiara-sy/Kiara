@@ -1,0 +1,155 @@
+1.
+#include <stdio.h>
+int main() {
+    int A, B;
+    scanf("%d %d", &A, &B);
+    if (A > B) {
+        printf(">\n");
+    }
+    else if (A < B) {
+        printf("<\n");
+    }
+    else {
+        printf("==\n");
+    }
+    return 0;
+}
+
+2.
+#include <stdio.h>
+int main() {
+    int score;
+    scanf("%d", &score);
+
+    switch (score / 10) {
+    case 10:
+        printf("A\n");
+        break;
+    case 9:
+        printf("A\n");
+        break;
+    case 8:
+        printf("B\n");
+        break;
+    case 7:
+        printf("C\n");
+        break;
+    case 6:
+        printf("D\n");
+        break;
+    default:
+        printf("F\n");
+        break;
+    }
+
+    return 0;
+}
+
+3.
+#include <stdio.h>
+
+int main() {
+    int year;
+    scanf("%d", &year);
+
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        printf("1\n");
+    }
+    else {
+        printf("0\n");
+    }
+
+    return 0;
+}
+
+4.
+#include <stdio.h>
+int main() {
+    int x, y;
+    scanf("%d", &x);
+    scanf("%d", &y);
+
+    if (x > 0 && y > 0) {
+        printf("1\n");
+    }
+    else if (x < 0 && y > 0) {
+        printf("2\n");
+    }
+    else if (x < 0 && y < 0) {
+        printf("3\n");
+    }
+    else if (x > 0 && y < 0) {
+        printf("4\n");
+    }
+
+    return 0;
+}
+
+5.
+#include <stdio.h>
+int main() {
+    int h, m;
+    scanf("%d", &h);
+    scanf("%d", &m);
+
+    if (m < 45) {
+        h -= 1;
+        m += 15;;
+        if (h < 0) {
+            h = 23;
+        }
+    }
+    else {
+        m -= 45;
+    }
+
+    printf("%d %d\n", h, m);
+    return 0;
+}
+
+6.
+#include <stdio.h>
+
+int main() {
+    int A, B, C;
+    scanf("%d %d", &A, &B);
+    scanf("%d", &C);
+
+    int total_minutes = A * 60 + B + C;
+
+    int end_hour = (total_minutes / 60) % 24;
+    int end_minute = total_minutes % 60;
+
+    printf("%d %d\n", end_hour, end_minute);
+
+    return 0;
+}
+
+7.
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
+    int prize = 0;
+
+    if (a == b && b == c) {
+        prize = 10000 + a * 1000;
+    }
+    else if (a == b || a == c) {
+        int same = a;
+        prize = 1000 + same * 100;
+    }
+    else if (b == c) {
+        int same = b;
+        prize = 1000 + same * 100;
+    }
+    else {
+        int max = a;
+        if (b > max) max = b;
+        if (c > max) max = c;
+        prize = max * 100;
+    }
+    printf("%d\n", prize);
+    return 0;
+}
