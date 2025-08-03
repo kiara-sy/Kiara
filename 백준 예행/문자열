@@ -1,0 +1,198 @@
+1.
+#include <stdio.h>
+
+int main() {
+    char S[1001]; 
+    int i;
+    scanf("%s", S);
+    scanf("%d", &i);
+    printf("%c\n", S[i - 1]);
+
+    return 0;
+}
+
+2.
+#include <stdio.h>
+#include <string.h> 
+int main() {
+    char word[101]; 
+    scanf("%s", word);
+    printf("%lu\n", strlen(word)); 
+    return 0;
+}
+
+3.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+    char str[1001];
+    for (int t = 0; t < T; t++) {
+        scanf("%s", str);
+        int len = strlen(str);
+        printf("%c%c\n", str[0], str[len - 1]);
+    }
+
+    return 0;
+}
+
+4.
+#include <stdio.h>
+
+int main() {
+    char c;
+    scanf("%c", &c);
+    printf("%d\n", c);
+    return 0;
+}
+
+5.
+#include <stdio.h>
+
+int main() {
+    int n, sum = 0;
+    char num[101];
+    scanf("%d", &n);
+    scanf("%s", num);
+
+    for (int i = 0; i < n; i++) {
+        sum += num[i] - '0';
+    }
+    printf("%d\n", sum);
+    return 0;
+}
+
+6.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[101];
+    int pos[26];
+
+    for (int i = 0; i < 26; i++)
+        pos[i] = -1;
+    scanf("%s", s);
+    for (int i = 0; s[i] != '\0'; i++) {
+        int index = s[i] - 'a';
+        if (pos[index] == -1)
+            pos[index] = i;
+    }
+    for (int i = 0; i < 26; i++)
+        printf("%d ", pos[i]);
+    return 0;
+}
+
+7.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int T, R;
+    char S[21];
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++) {
+        scanf("%d %s", &R, S);
+        for (int j = 0; j < strlen(S); j++) {
+            for (int k = 0; k < R; k++) {
+                printf("%c", S[j]);
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+8.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000001];
+    int count = 0;
+    int len;
+    fgets(str, sizeof(str), stdin);
+    len = strlen(str);
+    if (str[0] != ' ' && str[0] != '\n') {
+        count++;
+    }
+
+    for (int i = 1; i < len; i++) {
+        if (str[i - 1] == ' ' && str[i] != ' ' && str[i] != '\n') {
+            count++;
+        }
+    }
+    printf("%d\n", count);
+    return 0;
+}
+
+9.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void reverse(char* str) {
+    int len = strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        char tmp = str[i];
+        str[i] = str[len - 1 - i];
+        str[len - 1 - i] = tmp;
+    }
+}
+
+int main() {
+    char a[4], b[4];
+
+    scanf("%s %s", a, b);
+
+    reverse(a);
+    reverse(b);
+
+    int num1 = atoi(a);
+    int num2 = atoi(b);
+
+    if (num1 > num2)
+        printf("%d\n", num1);
+    else
+        printf("%d\n", num2);
+
+    return 0;
+}
+
+10.
+#include <stdio.h>
+
+int main() {
+    char str[16];
+    int total = 0;
+
+    scanf("%s", str);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= 'A' && str[i] <= 'C') total += 3;
+        else if (str[i] >= 'D' && str[i] <= 'F') total += 4;
+        else if (str[i] >= 'G' && str[i] <= 'I') total += 5;
+        else if (str[i] >= 'J' && str[i] <= 'L') total += 6;
+        else if (str[i] >= 'M' && str[i] <= 'O') total += 7;
+        else if (str[i] >= 'P' && str[i] <= 'S') total += 8;
+        else if (str[i] >= 'T' && str[i] <= 'V') total += 9;
+        else if (str[i] >= 'W' && str[i] <= 'Z') total += 10;
+    }
+    printf("%d\n", total);
+    return 0;
+}
+
+11.
+#include <stdio.h>
+
+int main() {
+    char line[101];
+
+    while (fgets(line, sizeof(line), stdin) != NULL) {
+        printf("%s", line);
+    }
+
+    return 0;
+}
