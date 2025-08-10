@@ -1,0 +1,110 @@
+#include <stdio.h>
+
+#define MAX 100000
+
+typedef struct {
+    int doc;
+    int interview;
+} Applicant;
+
+void swap(Applicant* a, Applicant* b) {
+    Applicant temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void quicksort(Applicant a[], int left, int right) {
+    int pivot, i, j;
+    if (left < right) {
+        i = left;
+        j = right + 1;
+        pivot = a[left].doc;
+
+        do {
+            do { i++; } while (i <= right && a[i].doc < pivot);
+            do { j--; } while (a[j].doc > pivot);
+            if (i < j) swap(&a[i], &a[j]);
+        } while (i < j);
+
+        swap(&a[left], &a[j]);
+
+        quicksort(a, left, j - 1);
+        quicksort(a, j + 1, right);
+    }
+}
+
+
+
+int main() {
+
+    int T, N;
+    scanf("%d", &T);
+    for (int t = 0; t < T; t++) {
+        scanf("%d", &N);
+        Applicant a[MAX];
+
+        for (int k = 0; k < N; k++) {
+            scanf("%d %d", &a[k].doc, &a[k].interview);   
+        }
+
+        quicksort(a, 0, N - 1);
+        
+        int New = 1;
+        int min = a[0].interview;
+        for (int k = 1; k < N; k++) {
+            if (min > a[k].interview) {
+                New++;
+                min = a[k].interview;
+            }
+        }
+        printf("%d\n", New);
+    }
+    return 0;
+}
+
+--------------------------------------------------------------------------------------------
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100000
+
+typedef struct {
+    int doc;
+    int interview;
+} Applicant;
+
+int comp(const void* a, const void* b) {
+    Applicant* x = (Applicant*)a;
+    Applicant* y = (Applicant*)b;
+    return x->doc - y->doc;
+}
+
+int main() {
+
+    int T, N;
+    scanf("%d", &T);
+    for (int t = 0; t < T; t++) {
+        scanf("%d", &N);
+        Applicant a[MAX];
+
+        for (int k = 0; k < N; k++) {
+            scanf("%d %d", &a[k].doc, &a[k].interview);   
+        }
+        
+        qsort(a, N, sizeof(Applicant), comp);
+
+        int New = 1;
+        int min = a[0].interview;
+        for (int k = 1; k < N; k++) {
+            if (min > a[k].interview) {
+                New++;
+                min = a[k].interview;
+            }
+        }
+        printf("%d\n", New);
+    }
+    return 0;
+}
