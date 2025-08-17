@@ -1,0 +1,158 @@
+1.
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int main() {
+    char N[36];
+    int B;
+    scanf("%s %d", N, &B);
+
+    int len = strlen(N);
+    long long result = 0;
+    long long power = 1;
+
+    for (int i = len - 1; i >= 0; i--) {
+        int digit;
+        if (N[i] >= '0' && N[i] <= '9') {
+            digit = N[i] - '0';
+        }
+        else {
+            digit = N[i] - 'A' + 10;
+        }
+        result += digit * power;
+        power *= B;
+    }
+
+    printf("%lld\n", result);
+    return 0;
+}
+
+2.
+#include <stdio.h>
+
+int main() {
+    long long N;
+    int B;
+    char result[100];
+    int idx = 0;
+    scanf("%lld %d", &N, &B);
+
+    while (N > 0) {
+        int digit = N % B;
+        if (digit < 10) {
+            result[idx++] = '0' + digit;
+        }
+        else {
+            result[idx++] = 'A' + (digit - 10);
+        }
+        N /= B;
+    }
+
+    for (int i = idx - 1; i >= 0; i--) {
+        printf("%c", result[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+3.
+#include <stdio.h>
+
+int main() {
+    int T, C;
+    scanf("%d", &T);
+
+    while (T--) {
+        scanf("%d", &C);
+
+        int quarter = C / 25;
+        C %= 25;
+
+        int dime = C / 10;
+        C %= 10;
+
+        int nickel = C / 5;
+        C %= 5;
+
+        int penny = C;
+
+        printf("%d %d %d %d\n", quarter, dime, nickel, penny);
+    }
+    return 0;
+}
+
+4.
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    int side = (int)pow(2, N) + 1;
+    printf("%d\n", side * side);
+
+    return 0;
+}
+
+5.
+#include <stdio.h>
+
+int main() {
+    long long N;
+    scanf("%lld", &N);
+
+    long long layer = 1; 
+    long long maxNum = 1;
+
+    while (N > maxNum) {
+        maxNum += 6 * layer;
+        layer++;
+    }
+
+    printf("%lld\n", layer);
+    return 0;
+}
+
+6.
+#include <stdio.h>
+
+int main() {
+    int X;
+    scanf("%d", &X);
+
+    int n = 1;
+    while (X > n * (n + 1) / 2) {
+        n++;
+    }
+    int start = n * (n - 1) / 2 + 1;
+    int offset = X - start;
+
+    int numerator, denominator;
+
+    if (n % 2 == 0) {
+        numerator = 1 + offset;
+        denominator = n - offset;
+    }
+    else {  
+        numerator = n - offset;
+        denominator = 1 + offset;
+    }
+    printf("%d/%d\n", numerator, denominator);
+    return 0;
+}
+
+7.
+#include <stdio.h>
+
+int main() {
+    long long A, B, V;
+    scanf("%lld %lld %lld", &A, &B, &V);
+
+    long long days = (V - A + (A - B) - 1) / (A - B) + 1;
+    printf("%lld\n", days);
+
+    return 0;
+}
